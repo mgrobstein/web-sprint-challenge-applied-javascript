@@ -17,7 +17,7 @@ const Tabs = (topics) => {
   //
 const topicsCard = document.createElement('div');
 topicsCard.classList.add('topics');
-topics.forEach(string => {
+topics.forEach((string) => {
   const stringCard = document.createElement('div');
   stringCard.classList.add('tab');
   stringCard.textContent = `${string}`;
@@ -25,7 +25,7 @@ topics.forEach(string => {
 });
 
 return topicsCard;
-}
+};
 
 const tabsAppender = (selector) => {
   // TASK 4
@@ -38,11 +38,13 @@ const tabsAppender = (selector) => {
   const wrapper = document.querySelector(selector);
   axios.get("http://localhost:5000/api/topics")
   .then(resp => {
-    const topicCard = resp.data.topics
-    topicCard.forEach( (item) =>{
-      const cards = Tabs(topicCard);
-      wrapper.appendChild(cards);
-    });
+    const topicCard = resp.data.topics;
+  
+    wrapper.append(Tabs(topicCard));
+    // topicCard.forEach( (item) =>{
+    //   const cards = Tabs([item]);
+    //   wrapper.append(cards);
+    // });
 });
 };
 
